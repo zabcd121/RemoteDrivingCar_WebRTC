@@ -1,0 +1,15 @@
+spring:
+  config:
+    import:
+      - application-devdb.yml
+server:
+  port: 8040
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+logging:
+  level:
+    org.hibernate:
+      type.descriptor.sql: trace #show parameter binding
+      SQL: DEBUG
