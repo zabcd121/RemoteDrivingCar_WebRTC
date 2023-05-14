@@ -1,4 +1,4 @@
-package com.mobility.remotedrivingmobility_be.repository;
+package com.mobility.remotedrivingmobility_be.repository.member;
 
 import com.mobility.remotedrivingmobility_be.domain.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;

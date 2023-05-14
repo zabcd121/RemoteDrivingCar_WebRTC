@@ -12,6 +12,7 @@ public class MessageType {
     public static final String MSG_TYPE_OFFER = "offer";
     public static final String MSG_TYPE_ANSWER = "answer";
     public static final String MSG_TYPE_ICE = "ice";
+    public static final String MSG_TYPE_WAIT = "wait";
 //    JOIN("join"),
 //    LEAVE("leave"),
 //    TEXT("text"),
