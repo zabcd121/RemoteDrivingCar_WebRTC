@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://driving-db:3306/RemoteDriving?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: love1994
+    hikari:
+      maximum-pool-size: 8
+      connection-timeout: 10000
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: com.mobility.remotedrivingmobility_be.config.UpperCaseNamingStrategy # 커스텀클래스 패키지
+    properties:
+      hibernate:
+        format_sql: true #To beautify or pretty print the SQL
+        default_batch_fetch_size: 100
+        #show_sql: true #show sql
+  redis:
+    host: driving-redis
+    port: 6379

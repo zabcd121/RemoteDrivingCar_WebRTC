@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static lombok.AccessLevel.*;
 
 @Entity
@@ -22,5 +25,17 @@ public class Member {
 
     private String name;
 
+    public static Member createMember(String loginId, String encodedPW, String name, RoleType role) {
+        Member member = Member.builder()
+                .account(Account.builder()
+                        .loginId(loginId)
+                        .password(encodedPW)
+                        .roleType(role)
+                        .build())
+                .name(name)
+                .build();
+
+        return member;
+    }
 
 }
