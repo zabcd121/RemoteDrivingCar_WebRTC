@@ -1,9 +1,9 @@
-package com.mobility.remotedrivingmobility_be.service;
+package com.mobility.remotedrivingmobility_be.service.client;
 
 import com.mobility.remotedrivingmobility_be.domain.member.Client;
 import com.mobility.remotedrivingmobility_be.domain.member.Member;
 import com.mobility.remotedrivingmobility_be.domain.remotedrivingroom.RemoteDrivingRoom;
-import com.mobility.remotedrivingmobility_be.repository.ClientRepository;
+import com.mobility.remotedrivingmobility_be.repository.client.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

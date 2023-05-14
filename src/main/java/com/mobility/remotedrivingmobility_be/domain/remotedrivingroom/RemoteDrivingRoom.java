@@ -30,40 +30,37 @@ public class RemoteDrivingRoom {
     @JoinColumn(name = "CAR_ID")
     private Car car;
 
-    @OneToMany(mappedBy = "remoteDrivingRoom", fetch = FetchType.LAZY, cascade = ALL)
-    private Set<Client> clients = new HashSet<>();
+    @OneToOne(mappedBy = "remoteDrivingRoom", fetch = FetchType.LAZY, cascade = ALL)
+    private Client client;
 
     private String name;
 
     //이건 빼야될듯
-    public static RemoteDrivingRoom createRemoteDrivingRoom(@NonNull String name) {
+    public static RemoteDrivingRoom createRemoteDrivingRoom(Car attemptingCar) {
         RemoteDrivingRoom room = new RemoteDrivingRoom();
-        room.name = name;
+        room.car = attemptingCar;
+        room.name = attemptingCar.getNumber();
         return room;
     }
 
     public void join(Client newClient) {
-        addClient(newClient);
+        changeClient(newClient);
     }
 
     public void leave(Client leavingClient) {
         removeClient(leavingClient);
     }
 
-    private void addClient(Client newClient) {
-        this.clients.add(newClient);
+    private void changeClient(Client newClient) {
+        this.client = newClient;
         if (newClient.getRemoteDrivingRoom() != this) {
             newClient.setRemoteDrivingRoom(this);
         }
     }
 
     private void removeClient(Client leavingClient) {
-        for (Client client : this.clients) {
-            if (client.getId() == leavingClient.getId()) {
-                clients.remove(client);
-                break;
-            }
-        }
+        this.client.setRemoteDrivingRoom(null);
+        this.client = null;
     }
 
 }

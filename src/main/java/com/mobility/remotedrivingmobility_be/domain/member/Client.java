@@ -23,7 +23,7 @@ public class Client {
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
 
-    @ManyToOne(fetch = LAZY)
+    @OneToOne(fetch = LAZY)
     @JoinColumn(name = "REMOTE_DRIVING_ROOM_ID")
     private RemoteDrivingRoom remoteDrivingRoom;
 

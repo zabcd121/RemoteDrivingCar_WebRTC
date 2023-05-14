@@ -1,4 +1,4 @@
-package com.mobility.remotedrivingmobility_be.repository;
+package com.mobility.remotedrivingmobility_be.repository.client;
 
 import com.mobility.remotedrivingmobility_be.domain.member.Client;
 import com.mobility.remotedrivingmobility_be.domain.remotedrivingroom.RemoteDrivingRoom;

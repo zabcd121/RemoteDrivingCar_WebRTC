@@ -1,7 +1,17 @@
 spring:
   config:
     import:
-      - application-devdb.yml
+      #- application-devdb.yml
+      - application-realdb.yml
+      - application-jwt.yml
+  profiles:
+    active: realdb
+    include: realdb
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    async:
+      request-timeout: 5000
 server:
   port: 8040
   tomcat:
@@ -11,5 +21,5 @@ server:
 logging:
   level:
     org.hibernate:
-      type.descriptor.sql: trace #show parameter binding
-      SQL: DEBUG
+      #type.descriptor.sql: trace #show parameter binding
+      #SQL: DEBUG

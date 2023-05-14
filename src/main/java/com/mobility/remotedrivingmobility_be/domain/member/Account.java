@@ -6,6 +6,9 @@ import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.EnumType.*;
 import static lombok.AccessLevel.*;
 
@@ -21,4 +24,14 @@ public class Account {
 
     @Enumerated(STRING)
     private RoleType roleType;
+
+    public List<String> getAuthorities() {
+        List roleList = new ArrayList();
+
+        if(!roleType.equals("")) {
+            roleList.add(roleType.toString());
+        }
+
+        return roleList;
+    }
 }

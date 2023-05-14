@@ -1,6 +1,9 @@
 package com.mobility.remotedrivingmobility_be.config;
 
+import com.mobility.remotedrivingmobility_be.service.client.ClientService;
+import com.mobility.remotedrivingmobility_be.service.remotedrivingroom.RemoteDrivingRoomService;
 import com.mobility.remotedrivingmobility_be.socket.SocketHandler;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
@@ -8,20 +11,24 @@ import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
 
 @Configuration
-@EnableWebSocketMessageBroker
+@EnableWebSocket
+@RequiredArgsConstructor
 public class WebSocketConfig implements WebSocketConfigurer {
+
+    private final SocketHandler socketHandler;
+
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(signalHandler(), "/ws")
+        registry.addHandler(socketHandler, "/ws")
                 .setAllowedOriginPatterns("*")
                 .withSockJS(); //Client의 web socket 지원 여부에 따라 Long Polling or Polling으로 통신한다.
     }
 
-    @Bean
+    /*@Bean
     public WebSocketHandler signalHandler() {
-        return new SocketHandler(new SocketHandler());
-    }
+        return new SocketHandler(roomService, clientService);
+    }*/
 
     @Bean
     public ServletServerContainerFactoryBean createWebSocketContainer() {
