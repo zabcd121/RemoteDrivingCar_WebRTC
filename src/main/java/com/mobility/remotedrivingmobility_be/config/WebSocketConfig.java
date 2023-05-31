@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
+import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 @Configuration
 @EnableWebSocket
@@ -20,9 +21,15 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+        System.out.println("WebSocketConfig.registerWebSocketHandlers");
+
+        registry.addHandler(socketHandler, "/ws")
+                .setAllowedOriginPatterns("*");
+
         registry.addHandler(socketHandler, "/ws")
                 .setAllowedOriginPatterns("*")
                 .withSockJS(); //Client의 web socket 지원 여부에 따라 Long Polling or Polling으로 통신한다.
+        System.out.println("WebSocketConfig.registerWebSocketHandlers");
     }
 
     /*@Bean

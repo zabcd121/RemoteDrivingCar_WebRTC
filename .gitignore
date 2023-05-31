@@ -37,4 +37,5 @@ out/
 .vscode/
 
 src/main/resources/application-devdb.yml
+src/main/resource/application-realdb.yml
 .DS_Store

@@ -6,6 +6,7 @@ import com.mobility.remotedrivingmobility_be.domain.remotedrivingroom.RemoteDriv
 import com.mobility.remotedrivingmobility_be.repository.client.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import static com.mobility.remotedrivingmobility_be.domain.member.Client.*;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class ClientService {
     private final ClientRepository clientRepository;
 
@@ -21,11 +23,23 @@ public class ClientService {
         clientRepository.save(createClient(member, room, session));
     }
 
-    public List<Client> searchClientsByRoom(RemoteDrivingRoom room) {
-        return clientRepository.findByRemoteDrivingRoom(room).orElse(new ArrayList<>());
+    public Client searchClientsByRoom(Long roomId) {
+        return clientRepository.findByRoomId(roomId);
+    }
+
+    public Client searchClientsByCar(Long carId) {
+        return clientRepository.findByCarId(carId);
     }
 
     public Client searchClientBySessionId(String sessionId) {
-        return clientRepository.findBySessionId(sessionId).orElseThrow(() -> new IllegalArgumentException("해당 세션에 해당하는 클라이언트가 존재하지 않습니다."));
+        Client client = clientRepository.findBySessionId(sessionId).orElseThrow(() -> new IllegalArgumentException("해당 세션에 해당하는 클라이언트가 존재하지 않습니다."));
+        client.getRemoteDrivingRoom();
+        return client;
+    }
+
+    public Client searchClientByMemberId(Long memberId) {
+        Client client = clientRepository.findByMemberId(memberId);
+        client.getRemoteDrivingRoom();
+        return client;
     }
 }

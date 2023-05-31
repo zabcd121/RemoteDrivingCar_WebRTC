@@ -1,12 +1,12 @@
 spring:
   config:
     import:
-      #- application-devdb.yml
-      - application-realdb.yml
+      - application-devdb.yml
+      #- application-realdb.yml
       - application-jwt.yml
   profiles:
-    active: realdb
-    include: realdb
+    active: devdb
+    include: devdb
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -23,3 +23,4 @@ logging:
     org.hibernate:
       #type.descriptor.sql: trace #show parameter binding
       #SQL: DEBUG
+    root: info

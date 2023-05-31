@@ -9,7 +9,7 @@ spring:
       connection-timeout: 10000
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       naming:
         physical-strategy: com.mobility.remotedrivingmobility_be.config.UpperCaseNamingStrategy # 커스텀클래스 패키지
     properties:
