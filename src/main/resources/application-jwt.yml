@@ -1,0 +1,7 @@
+jwt:
+  secret-key: eycXTuUMQRajJFMKy8aytRysw0bpQGGpmZyyXkCghh355lq5ZEEHPSO9IOmP
+#  token-validity-in-sec: 50
+#  refresh-token-validity-in-sec: 30
+  token-validity-in-sec: 50
+  refresh-token-validity-in-sec: 604800
+  authorization-header: Authorization

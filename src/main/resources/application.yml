@@ -1,0 +1,26 @@
+spring:
+  config:
+    import:
+      - application-devdb.yml
+      #- application-realdb.yml
+      - application-jwt.yml
+  profiles:
+    active: devdb
+    include: devdb
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    async:
+      request-timeout: 5000
+server:
+  port: 0
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+logging:
+  level:
+    org.hibernate:
+      #type.descriptor.sql: trace #show parameter binding
+      #SQL: DEBUG
+    root: info
