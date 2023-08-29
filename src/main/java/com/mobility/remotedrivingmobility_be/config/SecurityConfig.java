@@ -49,6 +49,7 @@ public class SecurityConfig {
         return (web -> web.ignoring().mvcMatchers(
                 "/ws/**",
                         "/api/members/token/reissue",
+                        "/api/rooms",
                         "/api/members/login",
                         "/api/admins/login",
                         "/api/members/signup/**",

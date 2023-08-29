@@ -12,6 +12,7 @@ public class CarResDto {
     public static class CarSearchRes {
         private Long carId;
         private String carNumber;
+        private Long roomId;
 
         public static CarSearchRes of(Car car) {
             return CarSearchRes.builder()

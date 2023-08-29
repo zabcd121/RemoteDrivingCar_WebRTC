@@ -8,6 +8,14 @@ public class CarReqDto {
     @AllArgsConstructor(access = AccessLevel.PRIVATE)
     @NoArgsConstructor
     @Getter
+    public static class CarRegistrationReq2 {
+        private String carNumber;
+    }
+
+    @Builder
+    @AllArgsConstructor(access = AccessLevel.PRIVATE)
+    @NoArgsConstructor
+    @Getter
     public static class CarRegistrationReq {
         private String carNumber;
     }

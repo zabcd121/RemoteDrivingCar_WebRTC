@@ -27,12 +27,13 @@ public class RemoteDrivingRoom {
 //    private Set<WebSocketSession> sessions = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CAR_ID")
+    @JoinColumn(name = "CAR_ID", unique = true)
     private Car car;
 
     @OneToOne(mappedBy = "remoteDrivingRoom", fetch = FetchType.LAZY, cascade = ALL)
     private Client client;
 
+    @Column(unique = true)
     private String name;
 
     //이건 빼야될듯

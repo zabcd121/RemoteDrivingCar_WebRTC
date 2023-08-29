@@ -13,7 +13,7 @@ spring:
     async:
       request-timeout: 5000
 server:
-  port: 0
+  port: 8030
   tomcat:
     mbeanregistry:
       enabled: true

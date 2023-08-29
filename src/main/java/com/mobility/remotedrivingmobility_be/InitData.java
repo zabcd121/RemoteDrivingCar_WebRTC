@@ -22,8 +22,8 @@ public class InitData {
 
     @PostConstruct
     public void init() throws Exception {
-        //initService.adminInit();
-        //initService.dataInit();
+        initService.adminInit();
+        initService.dataInit();
     }
 
     @Component
@@ -64,13 +64,22 @@ public class InitData {
                     .member(member1)
                     .number("21서 5678")
                     .build();
+
+            Car car3 = Car.builder()
+                    .member(member2)
+                    .number("43가 4321")
+                    .build();
+
             em.persist(car1);
             em.persist(car2);
+            em.persist(car3);
 
             RemoteDrivingRoom remoteDrivingRoom1 = RemoteDrivingRoom.createRemoteDrivingRoom(car1);
             RemoteDrivingRoom remoteDrivingRoom2 = RemoteDrivingRoom.createRemoteDrivingRoom(car2);
+            RemoteDrivingRoom remoteDrivingRoom3 = RemoteDrivingRoom.createRemoteDrivingRoom(car3);
             em.persist(remoteDrivingRoom1);
             em.persist(remoteDrivingRoom2);
+            em.persist(remoteDrivingRoom3);
 
         }
 

@@ -53,6 +53,8 @@ dependencies {
         exclude module: 'swagger-annotations' exclude module: 'swagger-models'
     }*/
 
+    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
