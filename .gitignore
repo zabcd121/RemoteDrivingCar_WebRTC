@@ -38,4 +38,5 @@ out/
 
 src/main/resources/application-devdb.yml
 src/main/resource/application-realdb.yml
+src/main/resource/application-jwt.yml
 .DS_Store

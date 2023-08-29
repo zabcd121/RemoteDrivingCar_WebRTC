@@ -17,7 +17,6 @@ server:
   tomcat:
     mbeanregistry:
       enabled: true
-
 logging:
   level:
     org.hibernate:

@@ -56,7 +56,7 @@ public class SocketHandler extends TextWebSocketHandler {
                         sendMessage(
                                 sessionIdMap.get(oppositeClient.getSessionId()),
                                 new WebSocketMessage(
-                                        joinedRoom.getId().toString(),
+                                        message.getFrom(),
                                         message.getType(),
                                         message.getData(),
                                         message.getCandidate(),
@@ -66,6 +66,7 @@ public class SocketHandler extends TextWebSocketHandler {
                 case MSG_TYPE_ICE_CLIENT:
                     Client client = clientService.searchClientByMemberId(Long.parseLong(message.getFrom()));
                     if (client != null) {
+                        log.info("[ws] Ice client: {}", message.getFrom());
                         RemoteDrivingRoom joinedRoom = client.getRemoteDrivingRoom();
                         sendMessage(
                                 carSessionMap.get(joinedRoom.getCar().getId().toString()),
@@ -131,21 +132,16 @@ public class SocketHandler extends TextWebSocketHandler {
     private void offerProcess(WebSocketMessage message, WebSocketSession session) { // RTCPeerConnection에 관한 candidate와 SDP(offer)를 생성한 후 서버에 넘겨줘 저장시킨다
         Object candidate = message.getCandidate();
         Object sdp = message.getSdp();
-//        log.info("[ws] Signal: {}",
-//                candidate != null
-//                        ? candidate.toString().substring(0, 64)
-//                        : sdp.toString().substring(0, 64));
         log.info("[ws] Signal in offerprocess method");
 
-        //Client oppositeClient = clientService.searchClientBySessionId(session.getId());
-        Client oppositeClient = clientService.searchClientsByRoom(Long.parseLong(message.getData()));
+        Client oppositeClient = clientService.searchClientsByCar(Long.parseLong(message.getFrom()));
 
         if (oppositeClient != null) {
             RemoteDrivingRoom joinedRoom = oppositeClient.getRemoteDrivingRoom();
             sendMessage(
                     sessionIdMap.get(oppositeClient.getSessionId()),
                     new WebSocketMessage(
-                        joinedRoom.getId().toString(),
+                        message.getFrom(),
                         message.getType(),
                         message.getData(),
                         candidate,
@@ -156,10 +152,7 @@ public class SocketHandler extends TextWebSocketHandler {
     private void answerProcess(WebSocketMessage message, WebSocketSession session) { // RTCPeerConnection에 관한 candidate와 SDP(offer)를 생성한 후 서버에 넘겨줘 저장시킨다
         Object candidate = message.getCandidate();
         Object sdp = message.getSdp();
-//        log.info("[ws] Signal: {}",
-//                candidate != null
-//                        ? candidate.toString().substring(0, 64)
-//                        : sdp.toString().substring(0, 64));
+
         log.info("[ws] Signal in answerprocess method");
 
         Client client = clientService.searchClientByMemberId(Long.parseLong(message.getFrom()));
@@ -184,40 +177,4 @@ public class SocketHandler extends TextWebSocketHandler {
             log.info("An error occured: {}", e.getMessage());
         }
     }
-
-    /*Object candidate = message.getCandidate();
-    Object sdp = message.getSdp();
-                    log.info("[ws] Signal: {}",
-    candidate != null
-            ? candidate.toString().substring(0, 64)
-                                    : sdp.toString().substring(0, 64));
-
-    RemoteDrivingRoom rm = clientService.searchClientBySessionId(session.getId()).getRemoteDrivingRoom();
-    //RemoteDrivingRoom rm = sessionIdToRoomMap.get(session.getId());
-                    if (rm != null) {
-        //Map<String, WebSocketSession> clients = roomService.getClients(rm);
-        Set<Client> clients = roomService.getClients(rm);
-        for(Client client : clients)  {
-            // send messages to all clients except current user
-            if (!client.getMember().getName().equals(memberId)) {
-                // select the same type to resend signal
-                sendMessage(sessionIdMap.get(client.getSessionId()),
-                        new WebSocketMessage(
-                                memberId,
-                                message.getType(),
-                                data,
-                                candidate,
-                                sdp));
-            }
-        }
-    }
-                    break;*/
-
-    /*
-    // remove the client which leaves from the Room clients list
-//                    Optional<String> client = roomService.getClients(room).stream()
-//                            .filter(c -> Objects.equals(c.getSessionId(), session.getId()))
-//                            .map(Map.Entry::getKey)
-//                            .findAny();
-     */
 }

@@ -35,8 +35,8 @@ public class RemoteDrivingRoomService {
 
 
     @Transactional
-    public RemoteDrivingRoom joinRoom(Long memberId, Long roomId, WebSocketSession session) {
-        RemoteDrivingRoom roomTryingToJoin = remoteDrivingRoomRepository.findById(roomId).orElseThrow(NoSuchElementException::new);
+    public RemoteDrivingRoom joinRoom(Long memberId, Long carId, WebSocketSession session) {
+        RemoteDrivingRoom roomTryingToJoin = remoteDrivingRoomRepository.findByCarId(carId);
         roomTryingToJoin.join(
                 createClient(
                         memberRepository.getReferenceById(memberId),
