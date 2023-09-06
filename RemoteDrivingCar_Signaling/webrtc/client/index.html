@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+
+<head>
+    <title>WebRTC demo</title>
+    <!--Bootstrap only for styling-->
+    
+    <script src="webrtcClient.js" defer></script>
+    <!--Bootstrap only for styling-->
+</head>
+<style>
+    .container {
+        background: rgb(148, 144, 144);
+        margin: 50px auto;
+        max-width: 80%;
+        text-align: center;
+        padding: 2%;
+    }
+
+    button {
+        margin: 1em;
+    }
+
+    input {
+        margin-top: 1em;
+    }
+
+    .footer {
+        background: rgb(148, 144, 144);
+        text-align: center;
+        padding: 2%;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+
+<body>
+
+    <video id = "videoElement" autoplays controls style="border : 1px solid red"></video>
+    <video id = "videoElement2" autoplays controls style="border : 1px solid red"></video>
+    <video id = "videoElement3" autoplays controls style="border : 1px solid red"></video>
+    <h1>Client</h1>
+    <input id="messageInput" type="text" class="form-control" placeholder="message">
+    <button type="button" class="btn btn-primary" onclick='sendMessage()'>SEND</button>
+
+</body>
+
+</html>
