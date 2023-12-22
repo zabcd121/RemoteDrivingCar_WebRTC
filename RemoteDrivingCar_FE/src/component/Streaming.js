@@ -25,6 +25,7 @@ const Streaming = () => {
     const [gear, setGear] = useState('');
     const [accel, setAccel] = useState(0);
     const [breakP, setBreak] = useState(0);
+    const [analysisResult, setAnalysisResult] = useState(0);
 
 
 
@@ -142,16 +143,15 @@ const Streaming = () => {
         peerConnection.ontrack = e => {
             console.log("여기 들어옴")
             console.log(e);
-            if(count === 0) {
-                frontVideoRef.current.srcObject = e.streams[0];
-            }else if(count === 1) {
-                leftVideoRef.current.srcObject = e.streams[0];
-            }else if (count === 2) {
-                rightVideoRef.current.srcObject = e.streams[0];
-            }
-            ++count;
-
-            //
+            // if(count === 0) {
+            frontVideoRef.current.srcObject = e.streams[0];
+            //}
+            // else if(count === 1) {
+            //     leftVideoRef.current.srcObject = e.streams[0];
+            // }else if (count === 2) {
+            //     rightVideoRef.current.srcObject = e.streams[0];
+            // }
+            // ++count;
         }
 
         peerConnection.onicecandidate = function(event) {
@@ -417,13 +417,6 @@ const Streaming = () => {
                 {/* <img id={"findObject"} ref={findObjRef} /> */}
                 <Link id="leave" href="/list" to={"/list"}><p>연결 끊기</p></Link>
             </div>
-
-            <div className="lower">
-                <video id="left" className="streaming" autoPlay controls ref={leftVideoRef}>3</video>
-                <video id="front" className="streaming" autoPlay controls ref={frontVideoRef}>4</video>
-                <video id="right" className="streaming" autoPlay controls ref={rightVideoRef}>5</video>
-            </div>
-            <br />
             <span className="speedChecker">
                 {/* <p ref={steeringRef}>{steering ? "상향등 켜짐" : ""}</p> */}
                 <p>엑셀: {(Math.floor((accel-1000)/3000*100) - 4) < 0 ? 0 : Math.floor((accel-1000)/3000*100) - 4} %</p>
@@ -449,6 +442,23 @@ const Streaming = () => {
                     className="right_arrow"
                     ref={rightRef}
                 />
+            </span>
+            <div className="lower">
+                {/* <video id="left" className="streaming" autoPlay controls ref={leftVideoRef}>3</video> */}
+                <video id="front" className="streaming" autoPlay controls ref={frontVideoRef}>4</video>
+                {/* <video id="right" className="streaming" autoPlay controls ref={rightVideoRef}>5</video> */}
+            </div>
+            <div className="analysis-text">
+                    <p className="target">분석 대상</p>
+                    <p className="result">분석 결과</p>
+                </div>
+            <div className="analysis-video-container">
+                <image id="left" className="analysis-video" ref={leftVideoRef}></image>
+                <image id="right" className="analysis-video" ref={rightVideoRef}></image>
+            </div>
+            <br />
+            <span className="result-text">
+                <p>분석 결과 <span>{analysisResult}mm</span> 오차 발생</p>
             </span>
 
         </div>
