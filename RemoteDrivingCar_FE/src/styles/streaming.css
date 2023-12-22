@@ -1,0 +1,94 @@
+.streaming_container {
+    text-align: center;
+}
+
+.streaming_container .streaming {
+    font-size: 16px;
+}
+
+.streaming {
+    border: 1px solid black;
+    width: 450px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.upper {
+    display: inline-block;
+    margin-top: 5px;
+}
+
+#findObject {
+    width: 700px;
+    height: 350px;
+}
+
+
+#back {
+    position: relative;
+    margin: 0 15vw;
+    width: 456px;
+    height: 152px;
+    
+}
+
+.streaming:not(#back) {
+    display: inline-block;
+}
+
+#front {
+    width: 800px;
+    height: 600px;
+}
+
+#leave {
+    position: absolute;
+    width: 120px;
+    height: 70px;
+    border: 1px solid #999;
+    border-radius: 15%;
+    background-color: red;
+
+}
+
+#leave:hover {
+    background-color: orange;
+    transition: 1s;
+}
+
+#leave p {
+    color: white;
+    font-weight: bold;
+}
+
+.back_mirror {
+    z-index: 3;
+    margin-top: -20px;
+}
+
+.lower {
+    margin-top: 100px;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.speedChecker {
+    display: inline-block;
+}
+
+.speedChecker p {
+    float: left;
+    left: 0;
+    font-size: 24px;
+    padding-right: 10vw;
+}
+
+.left_arrow {
+    padding-right: 10px;
+    opacity: 1.0;
+}
+
+.right_arrow {
+    padding-left: 10px;
+    opacity: 1.0;
+}

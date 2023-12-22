@@ -1,0 +1,76 @@
+#car {
+    width: 60vw;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
+    background-repeat: no-repeat;
+    
+}
+
+#car img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.registerBox {
+    
+    position: absolute;
+    float: left;
+    left: 60%;
+    width: 40%;
+    margin-top: 300px;
+    text-align: center;
+}
+
+.registerBox h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+#idTag {
+    padding-right: 43.5%;
+}
+
+#pwTag {
+    padding-right: 36%;
+}
+
+.registerBox p {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    height: 40px;   
+}
+
+.registerBox > p {
+    margin-top: 10px;
+}
+
+.registerBox input {
+    width: 45%;
+}
+
+.registerBox button {
+    margin: 10px auto;
+    display: block;
+    width: 50%;
+    height: 45px;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #0098F4;
+    border: none;
+    cursor: pointer;
+}
+
+.registerBox label, input {
+    height: 100%;
+    border: 2px solid #cbcbcb;
+    font-size: 20px;
+}
+
+.registerBox input::-webkit-input-placeholder {
+    padding-left: 10px;
+    color: #cbcbcb;
+}

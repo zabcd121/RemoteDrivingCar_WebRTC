@@ -1,0 +1,28 @@
+#listSection {
+    width: 60vw;
+    height: 60vh;
+    margin-left: 30%;
+    padding-top: 10%;
+}
+
+#listSection li {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    width: 20%;
+    padding-top: 5%;
+    background: #c4c4c4;
+    border-radius: 5%;
+    margin-bottom: 5px;
+}
+
+#listSection li p {
+    border: 1px solid black;
+    background: #0098F4;
+}
+
+#listSection li:hover p{
+    transition: 1.5s;
+    background: yellow;
+    cursor: pointer;
+}

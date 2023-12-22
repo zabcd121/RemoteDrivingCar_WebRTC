@@ -1,0 +1,35 @@
+#enroll_header {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 5%;
+    background-color: white;
+    border-bottom: 1px solid black;
+    
+}
+
+#section1 {
+    position: absolute;
+    line-height: 6vh;
+    left: 0;
+    color: #0098F4;
+    padding-left: 1.5vw;
+}
+
+#section1 p{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#section2 {
+    line-height: 5vh;
+    position: absolute;
+    right: 0;
+    padding-right: 5vw;
+    color: black;
+}
+
+#section2 p {
+    font-size: 17px;
+    cursor: pointer;
+}
