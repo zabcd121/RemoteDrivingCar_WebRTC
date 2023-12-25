@@ -41,7 +41,7 @@ const Login = (props) => {
             const tokenInfo = result.data.result.tokenInfo;
             sessionStorage.setItem('accessToken', tokenInfo.accessToken);
             sessionStorage.setItem('refreshToken', tokenInfo.refreshToken);
-            navigator('/enrollment');
+            navigator('/list');
         })
         .catch(err => {
         });

@@ -71,6 +71,7 @@ const CarList = () => {
             <Header props/>
             <div id="nav_section">
                 <div id ="navi">
+                    <div className="letter_space"><p>AGV 분석</p></div>
                     <div className="letter_space"><p onClick={() => goEnrollment()}>AGV 등록</p></div>
 
                     <div className="letter_space"><p>AGV 리스트</p></div>
@@ -78,10 +79,13 @@ const CarList = () => {
             </div>
             
             <div id='listSection'>
-                <ul ref={ulRef} id="carList">{
+                {/* <ul ref={ulRef} id="carList">{
                     carList.map(car => <li key={car.carId}>{car.carNumber}<br />
                     <p onClick={() => goStreaming(car.carId)}>접속하기</p></li>)
-                    // TODO 정렬 flexbox 해보기
+                }</ul> */}
+                <ul ref={ulRef} id="carList">{
+                    carList.map(car => <li key={car.carId}><br />
+                    <p onClick={() => goStreaming(car.carId)}>AGV 분석<br></br> 차량 접속</p></li>)
                 }</ul>
             </div>
         </>

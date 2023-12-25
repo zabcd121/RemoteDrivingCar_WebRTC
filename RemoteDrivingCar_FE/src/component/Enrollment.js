@@ -77,9 +77,10 @@ const Enrollment = () => {
             <Header props/>
         <div id="nav_section">
             <div id ="navi">
-                <div className="letter_space"><p onClick={() => goList()}>AGV 리스트</p></div>
-
+                <div className="letter_space"><p onClick={() => goList()}>AGV 분석</p></div>
                 <div className="letter_space"><p>AGV 등록</p></div>
+
+                <div className="letter_space"><p>AGV 리스트</p></div>
             </div>
 
             <div id="page_section">

@@ -3,17 +3,19 @@
     display: inline-block;
     width: 100%;
     height: 5%;
-    background-color: white;
-    border-bottom: 1px solid black;
+    /* background-color: white; */
+    background-color: #4169E1;
+    border-bottom: 0px solid white;
     
 }
 
 #section1 {
     position: absolute;
-    line-height: 6vh;
+    line-height: 5.5vh;
     left: 0;
-    color: #0098F4;
-    padding-left: 1.5vw;
+    /* color: #0098F4; */
+    color: white;
+    padding-left: 1.7vw;
 }
 
 #section1 p{
@@ -26,7 +28,7 @@
     position: absolute;
     right: 0;
     padding-right: 5vw;
-    color: black;
+    color: white;
 }
 
 #section2 p {

@@ -8,31 +8,34 @@
 
 #navi {
     display: block;
-    width: 20vw;
+    width: 17vw;
     height: 95vh;
-    background-color: #edede9;
+    /* background-color: #edede9; */
+    background-color: #DCDCDC;
     float: left;
-    border-right: 1px solid black;
+    border-right: 1px solid white;
 }
 
 #navi .letter_space:first-child {
     cursor: pointer;
+    border-top: 0px solid white;
 }
 
 #navi .letter_space {
     width: 100%;
-    height: 10vh;
-    border-bottom: 1px solid gray;
-    background-color: #c4c4c4;
+    height: 7vh;
+    border: 1px solid white;
+    /* background-color: #c4c4c4; */
+    background-color: #DCDCDC;
 }
 
 #navi .letter_space:first-child {
-    border-top: 1px solid gray;
+    border-top: 1px solid white;
 }
 
 #navi .letter_space p {
     text-align: center;
-    line-height: 10vh;
+    line-height: 7vh;
     font-size: 20px;
     font-weight: bold;
 }

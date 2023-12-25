@@ -99,10 +99,13 @@
 }
 
 .lower {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
     margin-top: 100px;
     vertical-align: middle;
-    align-items: center;
 }
+
 
 .speedChecker {
     display: inline-block;
@@ -133,4 +136,13 @@
 .result-text span {
     font-size: 38px;
     color: red;
+}
+
+.btn {
+    background-color: #0098F4;
+    font-size: 20px;
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
 }

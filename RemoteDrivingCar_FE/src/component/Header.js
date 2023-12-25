@@ -58,7 +58,7 @@ const Header = (props) => {
     return (
         <header>
             <div id="enroll_header">
-                <section id="section1"><p>AGV 관리 시스템</p></section>
+                <section id="section1"><p>AGV Management System</p></section>
                 <section id="section2"><p onClick={control}>{sessionStorage.getItem('loginId') === null ? 'login' : 'logout'}</p></section>
             </div>
         </header>

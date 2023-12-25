@@ -2,7 +2,8 @@
     width: 60vw;
     height: 60vh;
     margin-left: 30%;
-    padding-top: 10%;
+    padding-top: 23%;
+    padding-left: 22%;
 }
 
 #listSection li {
@@ -10,19 +11,20 @@
     font-size: 20px;
     font-weight: bold;
     width: 20%;
-    padding-top: 5%;
+    padding: 4% 4% 4% 4%;
     background: #c4c4c4;
     border-radius: 5%;
     margin-bottom: 5px;
-}
-
-#listSection li p {
-    border: 1px solid black;
     background: #0098F4;
 }
 
+#listSection li p {
+    background: #0098F4;
+    color: white;
+    font-size: 50px;
+}
+
 #listSection li:hover p{
-    transition: 1.5s;
-    background: yellow;
+    transition: 0.5s;
     cursor: pointer;
 }

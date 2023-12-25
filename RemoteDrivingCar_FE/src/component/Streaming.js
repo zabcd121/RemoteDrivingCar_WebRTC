@@ -27,9 +27,6 @@ const Streaming = () => {
     const [breakP, setBreak] = useState(0);
     const [analysisResult, setAnalysisResult] = useState(0);
 
-
-
-
     const inputRef = useRef({});
 
     const findObjRef = useRef({});
@@ -40,6 +37,8 @@ const Streaming = () => {
     const steeringRef = useRef(null);
     const leftRef = useRef(null);
     const rightRef = useRef(null);
+
+    const captureCanvasRef = useRef(null);
 
     //connecting to our signaling server
 //우리가 구축 한 Spring Boot 시그널링 서버가 http : // localhost : 8080 에서 실행되고 있음
@@ -270,6 +269,19 @@ const Streaming = () => {
         console.log("connection established successfully!!");
     };
 
+    const handleCapture = () => {
+        const video = frontVideoRef.current;
+        const canvas = captureCanvasRef.current;
+        const context = canvas.getContext('2d');
+        
+        // 캔버스의 크기를 비디오와 동일하게 설정
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        
+        // 비디오의 현재 프레임을 캔버스에 그리기
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    };
+
 
     /**
      * 연결 되었으므로 dataChannel 의 send 메서드를 사용하여 피어간에 메시지를 보낼 수 있다.
@@ -330,9 +342,9 @@ const Streaming = () => {
     const getGear = bit => {
         switch (bit) {
             case 0:
-                return 'D';
-            case 1:
                 return 'R';
+            case 1:
+                return 'D';
             // case 2:
             //     return 'R';
             // case 3:
@@ -423,7 +435,7 @@ const Streaming = () => {
                 {/* <p>브레이크: {(Math.floor((breakP-1000)/3000*100) - 4) < 0 ? 0 : Math.floor((breakP-1000)/3000*100) - 4} %</p> */}
                 <p>기어 : {gear}</p>
 
-                <img
+                {/* <img
                     src={left ? process.env.PUBLIC_URL + '/images/left-arrow-abled2.png' : process.env.PUBLIC_URL + '/images/left-arrow-disabled.png'}
                     alt="Left Blicker"
                     width={fixedSize}
@@ -441,20 +453,22 @@ const Streaming = () => {
                     //placeholder="blur"
                     className="right_arrow"
                     ref={rightRef}
-                />
+                /> */}
             </span>
             <div className="lower">
                 {/* <video id="left" className="streaming" autoPlay controls ref={leftVideoRef}>3</video> */}
                 <video id="front" className="streaming" autoPlay controls ref={frontVideoRef}>4</video>
                 {/* <video id="right" className="streaming" autoPlay controls ref={rightVideoRef}>5</video> */}
+                <button id="photo-button" class="btn btn-dark" onClick={handleCapture}>분석</button>
+                {/* <button id="clear-button" class="btn btn-dark">Clear</button> */}
             </div>
             <div className="analysis-text">
                     <p className="target">분석 대상</p>
                     <p className="result">분석 결과</p>
                 </div>
             <div className="analysis-video-container">
-                <image id="left" className="analysis-video" ref={leftVideoRef}></image>
-                <image id="right" className="analysis-video" ref={rightVideoRef}></image>
+                <canvas id="left" className="analysis-video" ref={captureCanvasRef}></canvas>
+                <canvas id="right" className="analysis-video" ref={rightVideoRef}></canvas>
             </div>
             <br />
             <span className="result-text">
